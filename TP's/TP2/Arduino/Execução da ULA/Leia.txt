@@ -1,0 +1,1 @@
+O comando (SOMA A, -B) não pode ser executado pois não existe o Binvert no sistema.
