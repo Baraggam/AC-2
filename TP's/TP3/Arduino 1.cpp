@@ -17,10 +17,7 @@ void setup()
 	pinMode(11, OUTPUT); // Verde
 	pinMode(12, OUTPUT); // Amarelo
 	pinMode(13, OUTPUT); // Vermelho
-	digitalWrite(10, LOW);
-	digitalWrite(11, LOW);
-	digitalWrite(12, LOW);
-	digitalWrite(13, LOW);
+	apagar();
 }
 
 void loop()
@@ -32,6 +29,7 @@ void loop()
 		{
 			tam /= 3;
 			fill();
+			apagar();
 			mostrar();
 			resetar();
 		}
@@ -67,6 +65,13 @@ void resetar()
 	tam = 0;
 }
 
+void apagar(){
+	digitalWrite(10, LOW);
+	digitalWrite(11, LOW);
+	digitalWrite(12, LOW);
+	digitalWrite(13, LOW);
+}
+
 void mostrar()
 {
 	String tela = "->| " + memoria[0];
@@ -75,7 +80,7 @@ void mostrar()
 		tela += " | " + memoria[i];
 	}
 	Serial.println(tela);
-	for (int i = 4; i < tam + 4; i++)
+	for (int i = PC; i < tam + 4; i++)
 	{
 		delay(2000);
 		decoder(memoria[i]);

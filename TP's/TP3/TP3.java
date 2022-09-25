@@ -3,7 +3,6 @@ import java.io.*;
 /*
  * RandomAccessFile é usado para abrir e percorrer o arquivo de entrada linha por linha;
  * FileWriter é usado para criar (ou substituir) e acrescentar ao arquivo de saída;
- * System.getProperty("user.dir") retorna o caminho em que o arquivo java está iniciado;
  */
 
 public class TP3 {
@@ -15,12 +14,11 @@ public class TP3 {
 	 */
 	public static void main(String args[]) {
 		try {
-			String path = System.getProperty("user.dir");
 			RandomAccessFile entrada = new RandomAccessFile(
-				path + "/testeula.ula",
+				"testeula.ula",
 				"r"
 			);
-			FileWriter saida = new FileWriter(path + "/testeula.hex");
+			FileWriter saida = new FileWriter("testeula.hex");
 			saida.write("");
 			int X = 0, Y = 0, W = 0;
 			String palavra = entrada.readLine();
@@ -43,6 +41,7 @@ public class TP3 {
 			entrada.close();
 			saida.close();
 		} catch (Exception e) {
+			System.out.println(e);
 			System.out.println("O arquivo não possui dados válidos");
 		}
 	}
